@@ -1,0 +1,14 @@
+dotenv
+openai
+uuid
+os
+datetime
+time
+json
+psycopg2
+requests
+smtplib
+email
+typing
+fastapi
+pydantic
