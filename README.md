@@ -8,28 +8,48 @@ This project is a **console‑based AI productivity agent** designed to help dev
 
 The project is organized into modular folders so each integration is isolated and easy to extend:
 
-Amulate_Build_2025/
+AMULATE_PROJECT_2025/
 │
-├── app.py                   # Entry point: console loop, persona routing
-├── .env                    # Environment variables (OPENAI_API_KEY, GITHUB_TOKEN)
-├── requirements.txt         # Python dependencies
+├── agent/
+│   ├── app.py                     # Main entry point (orchestrates agents & tools)
+│   ├── .env                       # Environment variables (API keys, DB URLs)
+│   │
+│   ├── agents/
+│   │   ├── planner_agent.py       # Daily planner & task reasoning agent
+│   │   ├── meeting_agent.py       # Meeting agenda & coordination agent
+│   │   └── __pycache__/
+│   │
+│   ├── tools/
+│   │   ├── github_tool.py         # GitHub integration (PRs, issues)
+│   │   ├── calendar_tool.py       # Calendar scheduling & events
+│   │   ├── email_tool.py          # Email sending (meeting invites, follow-ups)
+│   │   ├── reminder_tool.py       # Reminders & notifications
+│   │   ├── memory_tool.py         # Persistent memory (Postgres / vector DB)
+│   │   └── __pycache__/
+│   │
+│   ├── configs/
+│   │   ├── prompts.py             # System prompts (PLANNER, MEETING, etc.)
+│   │   └── __pycache__/
+│   │
+│   ├── mcp_server/
+│   │   ├── server.py              # MCP server exposing tools to agents
+│   │   └── __pycache__/
+│   │
+│   ├── storage/
+│   │   └── schema.sql             # Database schema for memory & state
+│   │
+│   ├── utils/
+│   │   ├── logging.py             # Centralized logging
+│   │   ├── ranking.py             # Task prioritization logic
+│   │   ├── reflection.py          # Agent reflection & self-improvement
+│   │   └── __pycache__/
+│   │
+│   └── __pycache__/
 │
-├── tools/                  # External integrations
-│   ├── init.py
-│   ├── github_tool.py      # GitHub API wrapper (repos, issues, PRs)
-│   ├── date_tool.py        # Current date/time helper
-│   └── calendar_tool.py    # (optional, if OAuth enabled later)
-│
-├── agents/                 # Persona definitions
-│   ├── init.py
-│   ├── developer.py         # Developer persona config
-│   ├── pm.py                # Product manager persona config
-│   └── lead.py              # Team lead persona config
-│
-└── utils/                  # Shared helpers
-├── init.py
-└── parser.py            # Natural language → structured commands
----
+├── .gitignore
+├── README.md
+└── requirements.txt
+
 
 ## 🧩 Components
 
